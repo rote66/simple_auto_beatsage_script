@@ -35,6 +35,7 @@ import json
 import os
 import sys
 import time
+import platform
 from typing import Dict, List, Optional, Tuple, Union
 from pathlib import Path
 import zipfile
@@ -392,4 +393,7 @@ if __name__ == '__main__':
         print(f"\n{GREEN}{SUCCESS} All files processed! {DONE}{RESET}")
     except Exception as e:
         print(f"{YELLOW}{ERROR} Error: {str(e)}{RESET}", file=sys.stderr)
-        sys.exit(1)
+    finally:
+        if platform.system() == "Windows":
+            os.system('pause')
+        sys.exit()
